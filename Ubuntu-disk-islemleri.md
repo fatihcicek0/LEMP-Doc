@@ -1,8 +1,12 @@
-
-
-
-
 # Disk ekleme
+
+## Herşeyden önce bir disk ekliyoruz ben VirtualBox da sanal makine kullandığım için;
+
+- storage -> Controller :SATA -> Add Hard Disk 
+
+yolunu izledim.
+
+
 
 #### tabloyu görmek için ;
   ````bash
@@ -106,16 +110,9 @@ Kısacası, “mounted on”, dosya sistemlerinin belirli bir noktaya bağlanmas
 ```bash
  1024*1024*[GB cinsinden istediğiniz alan]
 ```
-### Dosyayı Oluşturma
-Aşağıdaki komut 3 GB boyutunda, (girdi dosyası /dev/zero olduğu için) 0 bitleri ile dolu /swap_file/swap_file1 dosyasını oluşturur.
-```bash
- dd if=/dev/zero of=/swap_file/swap_file1 bs=1024 count=3145728
-```
+
 ### 3. Adım 
-####  Swap dosyasının boyutunu hesaplama.  
-```bash
- 1024*1024*[GB cinsinden istediğiniz alan]
-```
+
 ### Dosyayı Oluşturma
 Aşağıdaki komut 3 GB boyutunda, (girdi dosyası /dev/zero olduğu için) 0 bitleri ile dolu /swap_file/swap_file1 dosyasını oluşturur.
 ```bash
@@ -146,5 +143,23 @@ Swap Dosyasını Fstab Dosyasına Kaydetme;
 ```bash
 echo "/swap_file/swap_file1     swap     swap    defaults    0 0" >> /etc/fstab
 ```
+- Bu komut yerine bir metin düzenleme aracı ile de aşağıdaki metni /etc/fstab dosyasına yapıştırabilirsiniz.
+```bash
+    /swapfile     swap     swap    defaults    0 0
+```
+
+# Tüm Swap Dosyalarını Aktif/Deaktif Etme
+
+- Aşağıdaki komut ile tüm swap dosyalarını deaktif edebilirsiniz.
+```bash
+ swapoff -a
+```
+- Aşağıdaki ile ise tümünü aktif edebilirsiniz.
+```bash
+swapon -a
+```
+
+
+
 
 
