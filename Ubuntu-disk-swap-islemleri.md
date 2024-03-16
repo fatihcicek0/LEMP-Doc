@@ -159,7 +159,70 @@ echo "/swap_file/swap_file1     swap     swap    defaults    0 0" >> /etc/fstab
 swapon -a
 ```
 
+# (LVM) Logical Volume Management
+
+## Physical Volumes – PV Oluşturma
+
+- oluşturmak için;
 
 
+```bash
+pvcreate /dev/sdb1
+```
+- Görmek için;
 
 
+```bash
+pvdisplay 
+```
+
+## Volume Groups – VG Oluşturma
+
+- oluşturmak için;
+
+
+```bash
+vgcreate myvg /dev/sdb1 /dev/sdb2
+```
+- Görmek için;
+
+
+```bash
+vgdisplay 
+```
+
+# Logical Volumes – LV Oluşturma
+
+
+- oluşturmak için ``300 MB boyutunda``;
+
+
+```bash
+lvcreate -L 300M -n mylvm myvg
+```
+- Görmek için;
+
+
+```bash
+lvdisplay 
+```
+### Şimdi Mount edip kullanılabilir hale getirelim
+```bash
+ sudo mkfs.ext4 /dev/myvg/mylvm 
+```
+```bash
+ sudo mkdir /mylvm
+
+```
+```bash
+ sudo mount /dev/myvg/mylvm /mylvm 
+```
+
+#### Bilgisayar her açıldığında kendiliğinden mount etmesini istiyorsak;
+``
+/etc/fstab ın içine
+``
+
+```bash
+/dev/myvg/mylvm /mylvm  ext4 defaults 0 0
+```
