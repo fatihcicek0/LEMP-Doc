@@ -1,3 +1,10 @@
+### İçindekiler
+- [Disk](#disk)
+- [Swap](#swap)
+- [LVM](#lvm)
+
+
+# Disk
 # Disk ekleme
 
 ## Herşeyden önce bir disk ekliyoruz ben VirtualBox da sanal makine kullandığım için;
@@ -39,7 +46,7 @@ yeni bir partition eklemek
  n
 ````
 ### 5.adım ;
-partition number seçmek ; deault olarak bir veriyor ama değiştirebilirsiniz. 
+partition number seçmek ; default olarak bir veriyor ama değiştirebilirsiniz. 
 
 ````bash
  opsiyonel olarak istediğiniz 1-128 arası partition numberi yazın. ya da enter layın
@@ -91,12 +98,15 @@ Kısacası, “mounted on”, dosya sistemlerinin belirli bir noktaya bağlanmas
  sudo mkdir /mnt/mydisk
  sudo mount /dev/sdb1 /mnt/mydisk 
 ```
+
+# swap
 # Swap Alanı
 
   - Swap (Takas) Alanı, sabit disk üzerinde işletim sistemi tarafından ayrılmış bir bölümdür. İşlenecek veriler RAM’e sığmadığı zaman bu bölüm RAM gibi kullanılır ve böylece işlemlerin devam etmesi sağlanır. Swap alanı, RAM miktarı ihtiyacı karşılamadığı durumlarda kullanmak için işletim sisteminin geçici olarak kullandığı bir alandır. Kısacası, bu alan size kullanmak için daha büyük RAM kapasitesi sağlamaktadır.
   - Swap alanı, sabit disk üzerinde oluşturulur.
   - Sabit disklerin veri okuma/yazma hızları RAM’den daha düşüktür, bu nedenle swap alanının kullanılması işlemleri yavaşlatır.
   - Swap alanı, veri kaybı riski olmadan kullanılabilir.
+
 
 ## Swap Alanı Ekleme
 
@@ -158,7 +168,7 @@ echo "/swap_file/swap_file1     swap     swap    defaults    0 0" >> /etc/fstab
 ```bash
 swapon -a
 ```
-
+# LVM
 # (LVM) Logical Volume Management
 
 ## Physical Volumes – PV Oluşturma
